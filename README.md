@@ -232,3 +232,5 @@ SQLite can't create or open its shared-memory (`.shm`) file. Common causes:
 | [NPM](docs/NPM.md) | Updating skills, versioning, and publishing releases |
 
 <!-- e2e test: 2026-05-21T02:40:25Z -->
+
+<!-- e2e retry: 2026-05-21T02:48:41Z -->
