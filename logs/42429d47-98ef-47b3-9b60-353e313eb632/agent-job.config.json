@@ -1,5 +1,0 @@
-{
-  "title": "Patch 7 verification cron: write a one-line file at logs/patch7-ping-$(date",
-  "job": "Patch 7 verification cron: write a one-line file at logs/patch7-ping-$(date +%Y%m%d-%H%M%S).md saying \"Patch 7 cron-to-harness bridge is alive\". Commit + push to dZsignsoul/popebot-test. Do not modify any other files.",
-  "target_repo": "dZsignsoul/thepopebot"
-}
