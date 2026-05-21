@@ -106,3 +106,17 @@ export async function restoreSnapshot(name, timestamp, actor) {
   });
   return jsonOrError(res);
 }
+
+// ── Task 17: webhook delivery log helpers ──────────────────────────────
+export async function listWebhookDeliveries({ outcome, limit = 100 } = {}) {
+  const qs = new URLSearchParams();
+  if (outcome) qs.set('outcome', outcome);
+  if (limit) qs.set('limit', String(limit));
+  const res = await fetch(`${BASE}/webhooks/deliveries?${qs}`, { headers: headers(), cache: 'no-store' });
+  return jsonOrError(res);
+}
+
+export async function getWebhookDelivery(id) {
+  const res = await fetch(`${BASE}/webhooks/deliveries/${encodeURIComponent(id)}`, { headers: headers(), cache: 'no-store' });
+  return jsonOrError(res);
+}
