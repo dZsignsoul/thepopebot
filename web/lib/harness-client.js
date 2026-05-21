@@ -73,3 +73,36 @@ export async function bulkCancel(status, actor) {
   });
   return jsonOrError(res);
 }
+
+// ── Task 12: config-editor helpers ─────────────────────────────────────
+export async function getConfig(name) {
+  const res = await fetch(`${BASE}/config/${encodeURIComponent(name)}`, { headers: headers(), cache: 'no-store' });
+  return jsonOrError(res);
+}
+
+export async function putConfig(name, body, actor) {
+  const res = await fetch(`${BASE}/config/${encodeURIComponent(name)}`, {
+    method: 'PUT',
+    headers: { ...headers(actor), 'content-type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  return jsonOrError(res);
+}
+
+export async function getRepoTriggers() {
+  const res = await fetch(`${BASE}/config/REPO_TRIGGERS`, { headers: headers(), cache: 'no-store' });
+  return jsonOrError(res);
+}
+
+export async function listSnapshots(name) {
+  const res = await fetch(`${BASE}/config/${encodeURIComponent(name)}/snapshots`, { headers: headers(), cache: 'no-store' });
+  return jsonOrError(res);
+}
+
+export async function restoreSnapshot(name, timestamp, actor) {
+  const res = await fetch(`${BASE}/config/${encodeURIComponent(name)}/restore/${encodeURIComponent(timestamp)}`, {
+    method: 'POST',
+    headers: headers(actor),
+  });
+  return jsonOrError(res);
+}
