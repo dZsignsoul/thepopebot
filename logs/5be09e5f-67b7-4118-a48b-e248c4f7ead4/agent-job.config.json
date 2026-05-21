@@ -1,0 +1,4 @@
+{
+  "title": "A new GitHub issue was opened on dZsignsoul/popebot-test: \"patch6 v7",
+  "job": "A new GitHub issue was opened on dZsignsoul/popebot-test: \"patch6 v7 verify: noop\".\n\nBody:\nverify patch 6 retry loop. agent likely to fail due to missing upstream image (task 26); cleanup behavior is what matters\n\nTriage this issue: read it carefully, then write a markdown file at logs/triage-issue-8.md with sections: Summary, Acceptance Criteria, Affected Files (best guess), Suggested Approach, Risks. Commit and push. Do not modify code."
+}
