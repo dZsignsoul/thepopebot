@@ -22,7 +22,10 @@ RUN TPB_VERSION=$(node -p "require('./package.json').version") && \
 # 6 (force-remove container + 409 retry for volume cleanup).
 COPY lib/tools/docker.js              ./node_modules/thepopebot/lib/tools/docker.js
 COPY lib/tools/create-agent-job.js    ./node_modules/thepopebot/lib/tools/create-agent-job.js
+# settings-layout patch needs BOTH .jsx (source) and .js (pre-compiled sibling
+# that the npm package ships and Next.js actually imports from).
 COPY lib/chat/components/settings-layout.jsx ./node_modules/thepopebot/lib/chat/components/settings-layout.jsx
+COPY lib/chat/components/settings-layout.js  ./node_modules/thepopebot/lib/chat/components/settings-layout.js
 COPY api/index.js                     ./node_modules/thepopebot/api/index.js
 
 # ── Stage 2: Next.js build ───────────────────────────────────────
@@ -67,6 +70,7 @@ COPY web/server.js web/next.config.mjs web/instrumentation.js web/middleware.js 
 COPY lib/tools/docker.js              ./node_modules/thepopebot/lib/tools/docker.js
 COPY lib/tools/create-agent-job.js    ./node_modules/thepopebot/lib/tools/create-agent-job.js
 COPY lib/chat/components/settings-layout.jsx ./node_modules/thepopebot/lib/chat/components/settings-layout.jsx
+COPY lib/chat/components/settings-layout.js  ./node_modules/thepopebot/lib/chat/components/settings-layout.js
 COPY api/index.js                     ./node_modules/thepopebot/api/index.js
 
 EXPOSE 80
