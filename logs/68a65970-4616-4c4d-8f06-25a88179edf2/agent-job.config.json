@@ -1,0 +1,4 @@
+{
+  "title": "A new GitHub issue was opened on dZsignsoul/popebot-test: \"Add a",
+  "job": "A new GitHub issue was opened on dZsignsoul/popebot-test: \"Add a sample test file\".\n\nBody:\nCreate a test/sample.test.js with a single failing test that asserts 1===2.\n\nTriage this issue: read it carefully, then write a markdown file at logs/triage-issue-3.md with sections: Summary, Acceptance Criteria, Affected Files (best guess), Suggested Approach, Risks. Commit and push. Do not modify code."
+}
