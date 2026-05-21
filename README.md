@@ -87,6 +87,8 @@ npx thepopebot@latest init
 
 This creates a Next.js project with configuration files, GitHub Actions workflows, and agent templates. You don't need to create a GitHub repo first — the setup wizard handles that.
 
+Keep this project in a private GitHub repository. Agent projects store configuration, logs, and references to API keys and secrets; making the repository private helps keep those details secure. The setup wizard opens GitHub's new-repository page with private visibility selected.
+
 **Step 2** — Run the setup wizard:
 
 ```bash
@@ -95,7 +97,7 @@ npm run setup
 
 The wizard walks you through everything:
 - Checks prerequisites (Node.js, Git, GitHub CLI, Docker)
-- Creates a GitHub repository and pushes your initial commit
+- Creates a private GitHub repository and pushes your initial commit
 - Creates a GitHub Personal Access Token (scoped to your repo)
 - Configures your public URL and webhook secret
 - Syncs settings to `.env`, database, and GitHub secrets/variables
