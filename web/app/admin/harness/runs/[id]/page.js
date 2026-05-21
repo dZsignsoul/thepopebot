@@ -71,7 +71,7 @@ export default async function RunDetailPage({ params }) {
         {run.job && (
           <div className="mt-3">
             <div className="text-xs text-gray-500 mb-1">Job text</div>
-            <pre className="text-xs bg-gray-50 border rounded p-3 whitespace-pre-wrap">{run.job}</pre>
+            <pre className="text-xs bg-gray-50 border rounded p-3 whitespace-pre-wrap text-gray-900">{run.job}</pre>
           </div>
         )}
       </section>
