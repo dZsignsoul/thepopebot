@@ -2,6 +2,7 @@ import { auth } from 'thepopebot/auth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { listRuns } from '../../../../lib/harness-client.js';
+import AutoRefresh from './auto-refresh.js';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,7 +30,7 @@ export default async function HarnessRunsPage({ searchParams }) {
 
   return (
     <div className="p-6">
-      <meta httpEquiv="refresh" content="5" />
+      <AutoRefresh seconds={5} />
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-semibold">Harness Runs</h1>
         <div className="flex gap-2">

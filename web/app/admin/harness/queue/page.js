@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { listQueue } from '../../../../lib/harness-client.js';
 import BulkCancelButton from './bulk-cancel.js';
+import AutoRefresh from '../runs/auto-refresh.js';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,7 +32,7 @@ export default async function HarnessQueuePage({ searchParams }) {
 
   return (
     <div className="p-6">
-      <meta httpEquiv="refresh" content="5" />
+      <AutoRefresh seconds={5} />
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-semibold">Harness Queue</h1>
         <Link href="/admin/harness/runs" className="text-sm text-blue-600 hover:underline">← Runs</Link>
