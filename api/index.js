@@ -99,11 +99,15 @@ async function handleCreateAgentJob(request) {
     const result = await createAgentJob(job, {
       llmModel: body.llm_model,
       agentBackend: body.agent_backend,
+      targetRepo: body.target_repo,  // harness multi-repo override
     });
     return Response.json(result);
   } catch (err) {
     console.error(err);
-    return Response.json({ error: 'Failed to create agent job' }, { status: 500 });
+    const msg = err && err.message && err.message.includes('Invalid target_repo')
+      ? err.message : 'Failed to create agent job';
+    const status = msg.includes('Invalid target_repo') ? 400 : 500;
+    return Response.json({ error: msg }, { status });
   }
 }
 

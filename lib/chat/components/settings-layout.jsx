@@ -6,6 +6,7 @@ import { UserIcon, ClockIcon, ZapIcon, MessageIcon, GitBranchIcon, SettingsIcon 
 
 const TABS = [
   { id: 'event-handler', label: 'Event Handler', href: '/admin/event-handler', icon: MessageIcon },
+  { id: 'harness', label: 'Harness', href: '/admin/harness/runs', icon: ZapIcon },
   { id: 'github', label: 'GitHub', href: '/admin/github', icon: GitBranchIcon },
   { id: 'users', label: 'Users', href: '/admin/users', icon: UserIcon },
   { id: 'crons', label: 'Crons', href: '/admin/crons', icon: ClockIcon },
