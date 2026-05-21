@@ -120,3 +120,10 @@ export async function getWebhookDelivery(id) {
   const res = await fetch(`${BASE}/webhooks/deliveries/${encodeURIComponent(id)}`, { headers: headers(), cache: 'no-store' });
   return jsonOrError(res);
 }
+
+// ── Task 15: metrics ────────────────────────────────────────────────────
+export async function getMetrics({ days = 30 } = {}) {
+  const qs = new URLSearchParams({ days: String(days) });
+  const res = await fetch(`${BASE}/metrics?${qs}`, { headers: headers(), cache: 'no-store' });
+  return jsonOrError(res);
+}
