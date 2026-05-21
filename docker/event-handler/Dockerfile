@@ -46,5 +46,15 @@ RUN echo '{"private":true}' > package.json
 COPY --from=nextjs /app/.next ./.next
 COPY web/server.js web/next.config.mjs web/instrumentation.js web/middleware.js web/postcss.config.mjs ./
 
+# Patches against thepopebot npm package. These overrides MUST stay in sync
+# with the patched files in this repo (lib/tools/*, lib/chat/components/*,
+# api/*). See README or commit history for what each patch does.
+# Patches: 1 (resolveAgentImage), 4 (Harness nav tab), 5 (target_repo), 6
+# (force-remove container before volume cleanup).
+COPY lib/tools/docker.js              ./node_modules/thepopebot/lib/tools/docker.js
+COPY lib/tools/create-agent-job.js    ./node_modules/thepopebot/lib/tools/create-agent-job.js
+COPY lib/chat/components/settings-layout.jsx ./node_modules/thepopebot/lib/chat/components/settings-layout.jsx
+COPY api/index.js                     ./node_modules/thepopebot/api/index.js
+
 EXPOSE 80
 CMD ["pm2-runtime", "--kill-timeout", "120000", "server.js"]
