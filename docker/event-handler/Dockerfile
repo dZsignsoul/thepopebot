@@ -12,6 +12,19 @@ RUN TPB_VERSION=$(node -p "require('./package.json').version") && \
     echo "{\"private\":true}" > package.json && \
     npm install --no-save "thepopebot@${TPB_VERSION}" tailwindcss @tailwindcss/postcss
 
+# Apply patches against thepopebot npm package BEFORE next build.
+# This is critical: Next.js (stage 2) bundles popebot's code into
+# .next/server/chunks/*.js. If patches land after `next build`, the
+# compiled output contains UPSTREAM code and the patches in node_modules/
+# are never executed. See task 21 findings (2026-05-21) for the bug we
+# hit when this order was wrong.
+# Patches: 1 (resolveAgentImage), 4 (Harness nav tab), 5 (target_repo),
+# 6 (force-remove container + 409 retry for volume cleanup).
+COPY lib/tools/docker.js              ./node_modules/thepopebot/lib/tools/docker.js
+COPY lib/tools/create-agent-job.js    ./node_modules/thepopebot/lib/tools/create-agent-job.js
+COPY lib/chat/components/settings-layout.jsx ./node_modules/thepopebot/lib/chat/components/settings-layout.jsx
+COPY api/index.js                     ./node_modules/thepopebot/api/index.js
+
 # ── Stage 2: Next.js build ───────────────────────────────────────
 FROM node:22-bookworm-slim AS nextjs
 WORKDIR /app
