@@ -1,4 +1,0 @@
-{
-  "title": "Issue 3 (Add a sample test file) was labeled 'popebot:propose'.",
-  "job": "Issue 3 (Add a sample test file) was labeled 'popebot:propose'. Implement what the issue describes:\n\nCreate a test/sample.test.js with a single failing test that asserts 1===2."
-}
