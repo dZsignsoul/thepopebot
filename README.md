@@ -234,3 +234,5 @@ SQLite can't create or open its shared-memory (`.shm`) file. Common causes:
 <!-- e2e test: 2026-05-21T02:40:25Z -->
 
 <!-- e2e retry: 2026-05-21T02:48:41Z -->
+
+<!-- e2e retry #2: 2026-05-21T02:50:45Z -->
