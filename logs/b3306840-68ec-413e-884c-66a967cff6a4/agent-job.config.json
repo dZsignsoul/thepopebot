@@ -1,0 +1,4 @@
+{
+  "title": "A new GitHub issue was opened on dZsignsoul/popebot-test: \"Test: harness",
+  "job": "A new GitHub issue was opened on dZsignsoul/popebot-test: \"Test: harness webhook E2E\".\n\nBody:\nThis issue should trigger the issues.opened handler in the harness. Expected: agent triages it, writes logs/triage-issue-<n>.md, commits to thepopebot.\n\nTriage this issue: read it carefully, then write a markdown file at logs/triage-issue-2.md with sections: Summary, Acceptance Criteria, Affected Files (best guess), Suggested Approach, Risks. Commit and push. Do not modify code."
+}
