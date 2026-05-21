@@ -1,0 +1,4 @@
+{
+  "title": "E2E harness queue test. Write logs/hi.md containing the line: Hello",
+  "job": "E2E harness queue test. Write logs/hi.md containing the line: Hello from the harness queue. Commit and push."
+}
