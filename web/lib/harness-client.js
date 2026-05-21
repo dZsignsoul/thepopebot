@@ -127,3 +127,9 @@ export async function getMetrics({ days = 30 } = {}) {
   const res = await fetch(`${BASE}/metrics?${qs}`, { headers: headers(), cache: 'no-store' });
   return jsonOrError(res);
 }
+
+// ── Task 16: crons ──────────────────────────────────────────────────────
+export async function getCrons() {
+  const res = await fetch(`${BASE}/crons`, { headers: headers(), cache: 'no-store' });
+  return jsonOrError(res);
+}

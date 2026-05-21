@@ -27,6 +27,8 @@ COPY lib/tools/create-agent-job.js    ./node_modules/thepopebot/lib/tools/create
 COPY lib/chat/components/settings-layout.jsx ./node_modules/thepopebot/lib/chat/components/settings-layout.jsx
 COPY lib/chat/components/settings-layout.js  ./node_modules/thepopebot/lib/chat/components/settings-layout.js
 COPY api/index.js                     ./node_modules/thepopebot/api/index.js
+# Patch 7: cron-to-harness bridge (task 16).
+COPY lib/cron.js                      ./node_modules/thepopebot/lib/cron.js
 
 # ── Stage 2: Next.js build ───────────────────────────────────────
 FROM node:22-bookworm-slim AS nextjs
@@ -72,6 +74,8 @@ COPY lib/tools/create-agent-job.js    ./node_modules/thepopebot/lib/tools/create
 COPY lib/chat/components/settings-layout.jsx ./node_modules/thepopebot/lib/chat/components/settings-layout.jsx
 COPY lib/chat/components/settings-layout.js  ./node_modules/thepopebot/lib/chat/components/settings-layout.js
 COPY api/index.js                     ./node_modules/thepopebot/api/index.js
+# Patch 7: cron-to-harness bridge (task 16).
+COPY lib/cron.js                      ./node_modules/thepopebot/lib/cron.js
 
 EXPOSE 80
 CMD ["pm2-runtime", "--kill-timeout", "120000", "server.js"]
