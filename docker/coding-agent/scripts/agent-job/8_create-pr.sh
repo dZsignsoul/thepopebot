@@ -1,7 +1,22 @@
 #!/bin/bash
-# Create PR with log permalink, then exit with agent's exit code
+# Create PR with log permalink, then exit with agent's exit code.
+# Task 35: skip `gh pr create` for read-only / branch-only roles. The role
+# SYSTEM prompts explicitly forbid opening a PR for triage, docs, and review.
+# Marker: task-35-role-aware-pr-skip.
 
 cd /home/coding-agent/workspace
+
+case "${AGENT_BACKEND:-}" in
+    triage|docs|review)
+        echo "[8_create-pr.sh] AGENT_BACKEND=${AGENT_BACKEND} — skipping PR creation per role contract (task-35-role-aware-pr-skip)"
+        if [ "${AGENT_EXIT:-0}" -ne 0 ]; then
+            echo "Agent exited with code ${AGENT_EXIT}"
+            exit $AGENT_EXIT
+        fi
+        echo "Done. Agent Job ID: ${AGENT_JOB_ID}"
+        exit 0
+        ;;
+esac
 
 set +e
 
