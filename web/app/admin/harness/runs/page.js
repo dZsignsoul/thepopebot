@@ -33,7 +33,13 @@ export default async function HarnessRunsPage({ searchParams }) {
       <AutoRefresh seconds={5} />
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-semibold">Harness Runs</h1>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-3">
+          <Link
+            href="/admin/harness/runs/new"
+            className="px-3 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            + New agent job
+          </Link>
           <Link href="/admin/harness/queue" className="text-sm text-blue-600 hover:underline">Queue →</Link>
         </div>
       </div>

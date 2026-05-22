@@ -49,6 +49,20 @@ export async function listQueue({ status, limit = 100 } = {}) {
   return data?.rows || [];
 }
 
+// Task 34: enqueue a new agent job via the harness POST /queue/enqueue endpoint.
+// `body` accepts { job, target_repo, agent }. Returns { id, status }.
+export async function enqueueJob({ job, target_repo, agent }, actor) {
+  const payload = { job, source: 'admin-ui' };
+  if (target_repo) payload.target_repo = target_repo;
+  if (agent) payload.agent = agent;
+  const res = await fetch(`${BASE}/queue/enqueue`, {
+    method: 'POST',
+    headers: { ...headers(actor), 'content-type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  return jsonOrError(res);
+}
+
 export async function retryQueue(id, actor) {
   const res = await fetch(`${BASE}/queue/${encodeURIComponent(id)}/retry`, {
     method: 'POST',
