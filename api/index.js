@@ -100,13 +100,20 @@ async function handleCreateAgentJob(request) {
       llmModel: body.llm_model,
       agentBackend: body.agent_backend,
       targetRepo: body.target_repo,  // harness multi-repo override
+      // Patch 13 (task 36b): planner-role workspace injection.
+      planSpecPath: body.plan_spec_path,
+      planId: body.plan_id,
     });
     return Response.json(result);
   } catch (err) {
     console.error(err);
-    const msg = err && err.message && err.message.includes('Invalid target_repo')
-      ? err.message : 'Failed to create agent job';
-    const status = msg.includes('Invalid target_repo') ? 400 : 500;
+    const errMsg = err && err.message ? err.message : '';
+    // 400-able caller errors: bad target_repo, bad plan_spec_path, plan file missing on EFS.
+    const isCallerError = errMsg.includes('Invalid target_repo')
+      || errMsg.includes('plan_spec_path must be')
+      || (errMsg.includes('ENOENT') && errMsg.includes('agent-job/plans/'));
+    const msg = isCallerError ? errMsg : 'Failed to create agent job';
+    const status = isCallerError ? 400 : 500;
     return Response.json({ error: msg }, { status });
   }
 }
