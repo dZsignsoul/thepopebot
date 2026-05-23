@@ -1,6 +1,0 @@
-{
-  "title": "36b acceptance test 4: legacy non-plan create-agent-job call to confirm",
-  "job": "36b acceptance test 4: legacy non-plan create-agent-job call to confirm no regression",
-  "target_repo": "dZsignsoul/thepopebot",
-  "agent_backend": "triage"
-}
