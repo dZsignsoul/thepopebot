@@ -1,0 +1,6 @@
+=== patch-14-debug @ 2026-05-25T14:04:56Z ===
+AGENT_BACKEND='codex-cli'
+AGENT_EXIT='0'
+RUNTIME='agent-job'
+all AGENT_*: AGENT_JOB_TITLE=Audit JavaScript dependencies in the project. Steps: AGENT_JOB_DESCRIPTION=Audit JavaScript dependencies in the project. Steps: AGENT_JOB_TOKEN=tpb_aab29a6492c382d44856dc2a7177d99aacb296ec546758df564ad591b5294fff AGENT_BACKEND=codex-cli AGENT_JOB_ID=533defd0-12f3-4a84-a49b-598750ba2005 
+ROLE_PREFIX='codex-cli: '
